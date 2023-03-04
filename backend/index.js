@@ -1,9 +1,37 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-
+const express = require("express");
 const app = express();
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+const { sendSMS } = require("./sendSMS");
+const cors = require("cors");
 
+app.use(
+	cors({
+		origin: "*",
+	})
+);
 
-app.listen(3000, ()=>console.log("server running"));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.post("/sendsms", (req, res) => {
+	// const details = req.body.numbers
+    const numbers = req.body.numbers
+    console.log(req.body.numbers);
+	const details = numbers.split(",");
+	const message = "Hi you are welcome to eat at my place";
+	try {
+		details.forEach((value) => {
+			sendSMS(value, message);
+		});
+		console.log("sms sent");
+		res.status(200).json({
+			message: "sms sent",
+		});
+	} catch (err) {
+		console.log(err);
+		res.status(500).json({
+			message: `${err.message}`,
+		});
+	}
+});
+
+app.listen(3000, () => console.log("server running"));
