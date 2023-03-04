@@ -17,7 +17,7 @@ app.post("/sendsms", (req, res) => {
     const numbers = req.body.numbers
     console.log(req.body.numbers);
 	const details = numbers.split(",");
-	const message = "Hi you are welcome to eat at my place";
+	const message = req.body.message;
 	try {
 		details.forEach((value) => {
 			sendSMS(value, message);
