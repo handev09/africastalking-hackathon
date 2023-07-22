@@ -13,13 +13,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.post("/sendsms", (req, res) => {
-	// const details = req.body.numbers
+	const details = req.body.numbers
     const numbers = req.body.numbers
     console.log(req.body.numbers);
-	const details = numbers.split(",");
+	// const details = numbers.split(","); 
 	const message = req.body.message;
 	try {
 		details.forEach((value) => {
+			console.log(value)
 			sendSMS(value, message);
 		});
 		console.log("sms sent");
@@ -34,4 +35,4 @@ app.post("/sendsms", (req, res) => {
 	}
 });
 
-app.listen(3000, () => console.log("server running"));
+app.listen(3002, () => console.log("server running"));

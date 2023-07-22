@@ -2,8 +2,8 @@ require("dotenv").config();
 
 // Africa's Talking App credentials
 const credentials = {
-	apiKey: process.env.AFRICASTKNG_PROD,
-	username: "binusu-verify",
+	apiKey: "5ce749a8ede6487a99ee70fd4202f81773c44f310602413c4e81029e6917341e",
+	username: "smsbul",
 };
 
 // Initialize the SDK -Africa's talking
