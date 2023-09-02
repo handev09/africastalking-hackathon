@@ -2,8 +2,8 @@ require("dotenv").config();
 
 // Africa's Talking App credentials
 const credentials = {
-	apiKey: "5ce749a8ede6487a99ee70fd4202f81773c44f310602413c4e81029e6917341e",
-	username: "smsbul",
+	apiKey: "9945e5825bb9835ef74f2a1ad783a453fcb8fb72800f20dfb859c70d0acc5d81",
+	username: "PawsProtect",
 };
 
 // Initialize the SDK -Africa's talking
@@ -14,7 +14,7 @@ const sms = AfricasTalking.SMS;
 
 async function sendSMS(phonenumber, message) {
 	const options = {
-		to: [`+${phonenumber.trim()}`],
+		to: [phonenumber.trim()],
 		message: message,
 		from: "",
 	};
