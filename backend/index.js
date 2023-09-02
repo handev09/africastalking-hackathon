@@ -21,8 +21,8 @@ app.post("/sendsms", (req, res) => {
 	// const details = numbers.split(","); 
 	const message = req.body.message;
 	try {
-		
-			sendSMS(number, message);
+		number.map((number) => sendSMS(number, message));
+			// sendSMS(number, message);
 	
 		console.log("sms sent");
 		res.status(200).json({
